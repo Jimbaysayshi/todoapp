@@ -1,0 +1,23 @@
+#todoItemContainer {
+  margin-top: 2px;
+
+  margin-bottom: 2px;
+}
+
+#todoCheckBox {
+}
+
+#todoItemTitle {
+  width: 80%;
+  margin: auto;
+}
+#todoItemAdded {
+  margin: auto;
+  margin-right: 10px;
+}
+
+#xButton {
+  height: 50%;
+
+  cursor: pointer;
+}

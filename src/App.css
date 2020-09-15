@@ -1,38 +1,62 @@
 .App {
-  text-align: center;
+  /*min-width: 320px;*/
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  padding: 0 1rem;
+}
+#mainPage {
+  display: inline-block;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+#sidePanelOpen {
+  position: absolute;
+  height: 22px;
+  width: 80px;
+  background: rgba(255, 255, 255, 0.2);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.tableItem {
+  border-left: 2px solid white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#headerRow {
+  background: rgba(0, 0, 0, 0.4);
+  height: 2rem;
+}
+.tableRow {
+  width: 100%;
+}
+
+#todoTable {
+  height: 3.5rem;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.8);
+}
+#doneCol {
+  width: -webkit-fill-available;
+  border: none;
+  min-width: 44px;
+  width: 5%;
+}
+#todoCol {
+  width: 60%;
+  text-align: left;
+  padding-left: 10px;
+  min-width: 100px;
+}
+#addedCol {
+  width: 100px;
+  min-width: 100px;
+}
+#completedCol {
+  width: 100px;
+  min-width: 100px;
+}
+#delCol {
+  width: 10%;
+  min-width: 70px;
 }
