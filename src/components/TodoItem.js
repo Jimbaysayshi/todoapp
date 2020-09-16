@@ -3,16 +3,31 @@ import PropTypes from "prop-types";
 import "./todoitem.css";
 
 export class TodoItem extends Component {
-  getStyle = () => {
+  state = {
+    extendDescription: false,
+  };
+  styleLineOver = () => {
     return {
       //"line-through" if this.props.todo.done = true
       textDecoration: this.props.todo.done ? "line-through" : "none",
     };
   };
+  styleExtendDescription = () => {
+    this.setState((prevState) => ({
+      extendDescription: !prevState.extendDescription,
+    }));
+  };
 
   render() {
     //extract values by definign them in render before return
-    const { id, title, added, completed } = this.props.todo;
+    const {
+      id,
+      title,
+      added,
+      completed,
+      category,
+      description,
+    } = this.props.todo;
     return (
       <div id="todoItemContainer">
         <table id="todoTable">
@@ -27,7 +42,16 @@ export class TodoItem extends Component {
                 ></input>
               </th>
               <th className="tableItem" id="todoCol">
-                <div style={this.getStyle()}>{title}</div>
+                <div style={this.styleLineOver()}>{title}</div>
+                <div
+                  id="descriptionField"
+                  style={{
+                    display: this.state.extendDescription ? "none" : "block",
+                  }}
+                >
+                  <p>description: {description}</p>
+                  <p>category: {category}</p>
+                </div>
               </th>
               <th className="tableItem" id="addedCol">
                 <div id="todoItemAdded">{added}</div>
@@ -35,12 +59,18 @@ export class TodoItem extends Component {
               <th className="tableItem" id="completedCol">
                 {completed}
               </th>
-              <th className="tableItem" id="delCol">
+              <th className="tableItem" id="actionCol">
+                <button
+                  id="xButton"
+                  onClick={this.styleExtendDescription.bind(this)}
+                >
+                  {this.state.extendDescription ? "extend" : "collapse"}
+                </button>
                 <button
                   id="xButton"
                   onClick={this.props.deleteTodo.bind(this, id)}
                 >
-                  X
+                  delete
                 </button>
               </th>
             </tr>

@@ -4,6 +4,7 @@ export class AddTodo extends Component {
   state = {
     title: "",
     category: "",
+    description: "",
   };
 
   onChange = (e) => {
@@ -14,12 +15,21 @@ export class AddTodo extends Component {
       [e.target.name]: e.target.value,
     });
   };
+
   onSubmit = (e) => {
     //prevent default submit function and just launch Addtodo()
     e.preventDefault();
-    this.props.addTodo(this.state.title, this.state.category);
-    //set state to '' after ready
-    this.setState({ title: "", category: "" });
+    if (this.state.title.length >= 1) {
+      this.props.addTodo(
+        this.state.title,
+        this.state.category,
+        this.state.description
+      );
+      //set state to '' after ready
+      this.setState({ title: "", category: "", description: "" });
+    } else {
+      alert("You have to give a name for your todo");
+    }
   };
   render() {
     return (
@@ -36,8 +46,17 @@ export class AddTodo extends Component {
         <input
           className="addInput"
           type="text"
+          name="description"
+          placeholder="Add Description ..."
+          style={{ flex: "10", padding: "10px" }}
+          value={this.state.description}
+          onChange={this.onChange}
+        />
+        <input
+          className="addInput"
+          type="text"
           name="category"
-          placeholder="Add category ..."
+          placeholder="Add Category ..."
           style={{ flex: "10", padding: "10px" }}
           value={this.state.category}
           onChange={this.onChange}

@@ -5,31 +5,39 @@ import { v4 as uuid } from "uuid";
 export class SidePanel extends Component {
   state = { titles: [], categories: [] };
   componentDidMount() {
-    console.log(this.props.todos);
     this.showCategories();
   }
-
-  showTitles = (c) => {
+  componentDidUpdate() {
+    this.showCategories();
+  }
+  showTitles = (category) => {
     var titles;
-    if (c === "all") {
-      //FIX THIS TO MAP :)
-      titles = this.props.todos.filter((todo) => todo.title !== c);
+    if (category === "all") {
+      //"all" is the default button, shows every todo
+      titles = this.props.todos.filter((todo) => todo.title !== category);
     } else {
-      titles = this.props.todos.filter((todo) => todo.category === c);
+      //else only show todos in this category
+      titles = this.props.todos.filter((todo) => todo.category === category);
     }
     this.showCategories();
+
     this.setState({
       titles: titles,
     });
   };
+
   showCategories = () => {
+    //get all uniquely named category and set state accordingly
     var uniqueCategories = [
       ...new Set(this.props.todos.map((todos) => todos.category)),
     ];
-    this.setState({
-      categories: uniqueCategories,
-    });
-    return uniqueCategories;
+    if (
+      JSON.stringify(this.state.categories) !== JSON.stringify(uniqueCategories)
+    ) {
+      this.setState({
+        categories: uniqueCategories,
+      });
+    }
   };
   render() {
     const categories = this.state.categories.map((category) => (

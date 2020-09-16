@@ -24,6 +24,7 @@ class App extends Component {
         added: new Date().toLocaleString("no"),
         completed: "-",
         category: "home",
+        description: "do not trip",
       },
       {
         id: uuid(),
@@ -32,6 +33,7 @@ class App extends Component {
         added: new Date().toLocaleString("no"),
         completed: "-",
         category: "work",
+        description: "make it a good one, maybe use glitter?",
       },
     ],
   };
@@ -67,7 +69,7 @@ class App extends Component {
     });
   };
 
-  addTodo = (title, category) => {
+  addTodo = (title, category, description) => {
     const newTodo = {
       id: uuid(),
       title: title,
@@ -75,6 +77,7 @@ class App extends Component {
       added: new Date().toLocaleString("no"),
       completed: "-",
       category: category,
+      description: description,
     };
 
     if (this.state.categories.includes(category)) {
@@ -112,8 +115,8 @@ class App extends Component {
               <th className="tableItem" id="completedCol">
                 Completed
               </th>
-              <th className="tableItem" id="delCol">
-                Delete
+              <th className="tableItem" id="actionCol">
+                Actions
               </th>
             </tr>
           </thead>

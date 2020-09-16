@@ -16,6 +16,11 @@
   width: 80px;
   background: rgba(255, 255, 255, 0.2);
   color: white;
+  cursor: pointer;
+}
+#sidePanelOpen:focus {
+  border: solid 1px white;
+  outline: none;
 }
 
 .tableItem {
@@ -31,7 +36,6 @@
 }
 
 #todoTable {
-  height: 3.5rem;
   width: 100%;
   background: rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.8);
@@ -56,7 +60,7 @@
   width: 100px;
   min-width: 100px;
 }
-#delCol {
+#actionCol {
   width: 10%;
   min-width: 70px;
 }

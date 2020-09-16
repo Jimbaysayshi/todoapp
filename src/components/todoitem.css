@@ -18,6 +18,6 @@
 
 #xButton {
   height: 50%;
-
+  width: 60px;
   cursor: pointer;
 }
